@@ -10,10 +10,11 @@ if game.PlaceId == 10945472407 then
 --Values
 
 _G.autoWieght = true
-_G.autoHatch = true
-_G.selectEgg = "Basic"
 _G.autoRebirth = true
 _G.fastPunch = true
+_G.autoHatch = true
+_G.selectEgg = "Basic"
+_G.equipBestPets = true
 
 --Functions
 
@@ -28,8 +29,6 @@ end
 function smash()
 	game:GetService("ReplicatedStorage").Skills.SmashFolder.RemoteEvent:FireServer()
 end
-
-
 
 function fastPunch()
 	while _G.fastPunch == true do
@@ -58,6 +57,23 @@ end
 end
 end
 
+function autoRebirth()
+		while _G.autoRebirth == true do
+			game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
+			wait(.01)
+		 end
+		end
+
+function rebirth()
+	game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
+		wait(.01)
+	end
+
+function Teleport(teleportPlace)
+	local player = game.Players.LocalPlayer
+	player.Character.HumanoidRootPart.CFrame = teleportPlace
+end
+
 function autoHatch()
 	while _G.autoHatch == true do
 		game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(_G.selectEgg,1)
@@ -65,29 +81,21 @@ function autoHatch()
 	 end
 	end
 
-function equipBestPets()
-	game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Unequip All")
-	wait(.01)
-	game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Equip Best")
-	wait(.01)
-end
-
-function Teleport(teleportPlace)
-	local player = game.Players.LocalPlayer
-	player.Character.HumanoidRootPart.CFrame = teleportPlace
-end
-
-function autoRebirth()
-	while _G.autoRebirth == true do
-		game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
-		wait(.0001)
+function craftAllPets()
+	while _G.craftAllPets == true do
+		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PetAction"):InvokeServer("Craft All")
+		wait(.5)
 	 end
 	end
 
-function rebirth()
-	game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
-	wait(.0001)
-end
+function equipBestPets()
+	while _G.equipBestPets == true do
+		game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Unequip All")
+		wait(.01)
+		game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Equip Best")
+		wait(10)
+	 end
+	end
 
 --Tabs
 
@@ -169,6 +177,24 @@ EggTab:AddToggle({
 		_G.autoHatch = (Value)
         autoHatch()
 	end    
+})
+
+EggTab:AddToggle({
+	Name = "Equip Best Pets",
+	Default = false,
+	Callback = function(Value)
+		_G.equipBestPets = (Value)
+		equipBestPets()
+	end
+})
+
+EggTab:AddToggle({
+	Name = "Craft All Pets", 
+	Default = false,
+	Callback = function(Value)
+		_G.craftAllPets = (Value)
+		craftAllPets()
+	end
 })
 
 --Dropdowns
@@ -260,20 +286,6 @@ MapTab:AddButton({
 end
 })
 
-EggTab:AddButton({
-	Name = "Equip Best Pets",
-	Callback = function()
-		equipBestPets()
-	end
-})
-
-EggTab:AddButton({
-	Name = "Craft All Pets", 
-	Callback = function()
-		game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Craft All")
-	end
-})
-
 PotionTab:AddButton({
 	Name = "Double Muscle",
 	Callback = function()
@@ -319,6 +331,8 @@ MiscTab:AddButton({
 	end
 end
 })
+
+--Sliders
 
 end
 OrionLib:Init()
