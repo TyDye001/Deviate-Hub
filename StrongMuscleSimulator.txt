@@ -125,12 +125,6 @@ local EggTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local TrollTab = Window:MakeTab({
-	Name = "Troll Menu",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
 local PotionTab = Window:MakeTab({
 	Name = "Potions",
 	Icon = "rbxassetid://4483345998",
