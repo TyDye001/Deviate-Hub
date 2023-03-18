@@ -84,7 +84,7 @@ function autoHatch()
 function craftAllPets()
 	while _G.craftAllPets == true do
 		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PetAction"):InvokeServer("Craft All")
-		wait(.5)
+		wait(.1)
 	 end
 	end
 
@@ -211,7 +211,7 @@ MapTab:AddDropdown({
 EggTab:AddDropdown({
 	Name = "Select Egg",
 	Default = "Basic",
-	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel"},
+	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Patrick"},
 	Callback = function(Value)
 		_G.selectEgg = (Value)
 	end    
