@@ -211,7 +211,7 @@ MapTab:AddDropdown({
 EggTab:AddDropdown({
 	Name = "Select Egg",
 	Default = "Basic",
-	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Patrick"},
+	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel"},
 	Callback = function(Value)
 		_G.selectEgg = (Value)
 	end    
