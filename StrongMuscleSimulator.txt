@@ -15,6 +15,8 @@ _G.fastPunch = true
 _G.autoHatch = true
 _G.selectEgg = "Basic"
 _G.equipBestPets = true
+_G.teleportPlayer = true
+_G.playerName = "String"
 
 --Functions
 
@@ -105,12 +107,6 @@ local FarmTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local RebirthTab = Window:MakeTab({
-	Name = "Rebirth",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
 local SkillTab = Window:MakeTab({
 	Name = "Skills",
 	Icon = "rbxassetid://4483345998",
@@ -125,6 +121,12 @@ local MapTab = Window:MakeTab({
 
 local EggTab = Window:MakeTab({
 	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local TrollTab = Window:MakeTab({
+	Name = "Troll Menu",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -152,7 +154,7 @@ FarmTab:AddToggle({
 	end    
 })
 
-RebirthTab:AddToggle({
+FarmTab:AddToggle({
 	Name = "Auto Rebirth",
 	Default = false,
 	Callback = function(Value)
@@ -197,6 +199,7 @@ EggTab:AddToggle({
 	end
 })
 
+
 --Dropdowns
 
 MapTab:AddDropdown({
@@ -227,13 +230,6 @@ MiscTab:AddDropdown({
 })
 
 --Buttons
-
-RebirthTab:AddButton({
-	Name = "Rebirth",
-	Callback = function()
-		rebirth()
-	end
-})
 
 SkillTab:AddButton({
 	Name = "Kamehameha No Cooldown",
@@ -284,6 +280,22 @@ MapTab:AddButton({
 		elseif getgenv().TPPlace == "Heaven" then
   	end  
 end
+})
+
+MapTab:AddTextbox({
+	Name = "Select Player",
+	Default = "No One",
+	TextDisappear = false,
+	Callback = function(Value)
+		_G.playerName = (Value)
+	end	  
+})
+
+MapTab:AddButton({
+	Name = "Teleport To Player", 
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[_G.playerName].Character.HumanoidRootPart.CFrame
+	end
 })
 
 MapTab:AddButton({
