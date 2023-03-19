@@ -12,11 +12,14 @@ if game.PlaceId == 10945472407 then
 _G.autoWieght = true
 _G.autoRebirth = true
 _G.fastPunch = true
+_G.multiPunch = true
 _G.autoHatch = true
 _G.selectEgg = "Basic"
 _G.equipBestPets = true
 _G.teleportPlayer = true
 _G.playerName = "String"
+_G.dfSpawn = "String"
+
 
 --Functions
 
@@ -30,6 +33,20 @@ end
 
 function smash()
 	game:GetService("ReplicatedStorage").Skills.SmashFolder.RemoteEvent:FireServer()
+end
+
+function multiPunch()
+	while _G.multiPunch == true do
+	game:GetService("ReplicatedStorage").Skills.MultiplePunchesFolder.RemoteEvent:FireServer()
+	wait(.25)
+	end
+end
+
+function smashGround()
+	while _G.smashGround == true do
+		game:GetService("ReplicatedStorage").Skills.GroundPunchFolder.RemoteEvent:FireServer()
+		wait(.1)
+	end
 end
 
 function fastPunch()
@@ -99,6 +116,11 @@ function equipBestPets()
 	 end
 	end
 
+	function checkdf(dfLocation)
+		local player = game.Players.LocalPlayer
+		player.Character.HumanoidRootPart.CFrame = dfLocation
+	end
+
 --Tabs
 
 local FarmTab = Window:MakeTab({
@@ -121,6 +143,12 @@ local MapTab = Window:MakeTab({
 
 local EggTab = Window:MakeTab({
 	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local DFTab = Window:MakeTab({
+	Name = "Devil Fruits",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -166,6 +194,33 @@ SkillTab:AddToggle({
 	end
 })
 
+SkillTab:AddToggle({
+	Name = "Multiple Punch",
+	Default = false,
+	Callback = function(Value)
+		_G.multiPunch = (Value)
+		multiPunch()
+	end
+})
+
+SkillTab:AddToggle({
+	Name = "Smash Ground",
+	Default = false,
+	Callback = function(Value)
+		_G.smashGround = (Value)
+		smashGround()
+	end
+})
+
+EggTab:AddDropdown({
+	Name = "Select Egg",
+	Default = "Basic",
+	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Patrick"},
+	Callback = function(Value)
+		_G.selectEgg = (Value)
+	end    
+})
+
 EggTab:AddToggle({
 	Name = "Auto Hatch",
 	Default = false,
@@ -193,7 +248,6 @@ EggTab:AddToggle({
 	end
 })
 
-
 --Dropdowns
 
 MapTab:AddDropdown({
@@ -202,15 +256,6 @@ MapTab:AddDropdown({
 	Options = {"Spawn", "Jungle", "Beach", "Space", "Forest", "Desert", "Hell", "Candy", "Void", "Anime", "Moon", "Heaven"},
 	Callback = function(Value)
 		getgenv().TPPlace = (Value)
-	end    
-})
-
-EggTab:AddDropdown({
-	Name = "Select Egg",
-	Default = "Basic",
-	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Patrick"},
-	Callback = function(Value)
-		_G.selectEgg = (Value)
 	end    
 })
 
@@ -226,7 +271,7 @@ MiscTab:AddDropdown({
 --Buttons
 
 SkillTab:AddButton({
-	Name = "Kamehameha No Cooldown",
+	Name = "Kamehameha (No Damage)",
 	Callback = function()
 		kamehameha()
 	end
@@ -292,20 +337,6 @@ MapTab:AddButton({
 	end
 })
 
-MapTab:AddButton({
-	Name = "Collect Rewards",
-	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1213.58984, 7.16420555, 364.04599, 0.725067735, -6.93919233e-08, -0.688677549, -4.97258812e-09, 1, -1.05996463e-07, 0.688677549, 8.0279122e-08, 0.725067735)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1517.51074, 7.11579514, -487.748535, 0.47995621, 3.78450409e-08, 0.877292454, -9.56772084e-08, 1, 9.20539911e-09, -0.877292454, -8.83550797e-08, 0.47995621)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1487.08655, 8.31360435, -982.108276, 0.939927518, -2.42096068e-08, -0.34137404, 2.45030951e-09, 1, -6.41715232e-08, 0.34137404, 5.94801115e-08, 0.939927518)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1317.07288, 7.71920776, 199.789337, 0.986501276, 4.0791754e-08, 0.163753569, -3.72992339e-08, 1, -2.44025866e-08, -0.163753569, 1.79652986e-08, 0.986501276)
-		wait(.5)
-	end
-})
-
 PotionTab:AddButton({
 	Name = "Double Muscle",
 	Callback = function()
@@ -350,6 +381,62 @@ MiscTab:AddButton({
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
 	end
 end
+})
+
+DFTab:AddDropdown({
+	Name = "Devil Fruit Location",
+	Default = "Barrel",
+	Options = {"Barrel", "King Of The Hill", "Skill Machine", "2x Muscle", "Waterfall", "Win Chest", "Volcano", "Donut", "Trash Can", "Street Lamp", "Rocket"},
+	Callback = function(Value)
+		_G.dfSpawn = (Value)
+	end    
+})
+
+DFTab:AddButton({
+	Name = "Teleport To Devil Fruit",
+	Callback = function()
+		if _G.dfSpawn == "Barrel" then
+			checkdf(CFrame.new(-1394.16003, 2.91024399, 581.065491, 0.0475203395, -0, -0.998870313, 0, 1, -0, 0.998870313, 0, 0.0475203395))
+		elseif _G.dfSpawn == "King Of The Hill" then
+			checkdf(CFrame.new(-1584.24121, 2.91024303, 169.769867, 0.0475203395, -0, -0.998870313, 0, 1, -0, 0.998870313, 0, 0.0475203395))
+		elseif _G.dfSpawn == "Skill Machine" then
+			checkdf(CFrame.new(-1491.203, 25.3651505, -25.635498, 0.0407171249, -0, -0.999170721, 0, 1, -0, 0.999170721, 0, 0.0407171249))
+		elseif _G.dfSpawn == "2x Muscle" then
+			checkdf(CFrame.new(-1552.35376, 6.69221401, -254.064758, 0.240145445, -0, -0.9707371, 0, 1, -0, 0.9707371, 0, 0.240145445))
+		elseif _G.dfSpawn == "Waterfall" then
+			checkdf(CFrame.new(-1398.36719, 1.64325798, -744.06366, -1, 0, 0, 0, 1, 0, 0, 0, -1))
+		elseif _G.dfSpawn == "Win Chest" then
+			checkdf(CFrame.new(-1458.68591, 4.05964279, -989.50531, -0.259705067, 0, 0.965688229, 0, 1, 0, -0.965688229, 0, -0.259705067))
+		elseif _G.dfSpawn == "Volcano" then
+			checkdf(CFrame.new(-1571.54639, 26.1938019, -1218.80371, 0, 0, 1, 0, 1, -0, -1, 0, 0))
+		elseif _G.dfSpawn == "Donut" then
+			checkdf(CFrame.new(-1709.56567, 1.13857174, -1502.30005, -0.692419767, 0, 0.721495032, 0, 1, 0, -0.721495032, 0, -0.692419767))
+		elseif _G.dfSpawn == "Trash Can" then
+			checkdf(CFrame.new(-1720.99792, 1.16631317, -1615.99414, -0.319775343, 0, 0.947493434, 0, 1, 0, -0.947493434, 0, -0.319775343))
+		elseif _G.dfSpawn == "Street Lamp" then
+			checkdf(CFrame.new(-1914.74341, 29.4129677, -1643.6803, 0.997959793, -0, -0.0638457164, 0, 1, -0, 0.0638457164, 0, 0.997959793))
+		elseif _G.dfSpawn == "Rocket" then
+			checkdf(CFrame.new(-1870.85486, 18.8881836, -2043.48596, 0.96359247, -0, -0.26737529, 0, 1, -0, 0.26737529, 0, 0.96359247))
+		elseif _G.dfSpawn == "" then
+
+		elseif _G.dfSpawn == "" then
+
+		end
+	end
+})
+
+MiscTab:AddButton({
+	Name = "Collect Rewards",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1213.58984, 7.16420555, 364.04599, 0.725067735, -6.93919233e-08, -0.688677549, -4.97258812e-09, 1, -1.05996463e-07, 0.688677549, 8.0279122e-08, 0.725067735)
+		wait(.5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1517.51074, 7.11579514, -487.748535, 0.47995621, 3.78450409e-08, 0.877292454, -9.56772084e-08, 1, 9.20539911e-09, -0.877292454, -8.83550797e-08, 0.47995621)
+		wait(.5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1487.08655, 8.31360435, -982.108276, 0.939927518, -2.42096068e-08, -0.34137404, 2.45030951e-09, 1, -6.41715232e-08, 0.34137404, 5.94801115e-08, 0.939927518)
+		wait(.5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1317.07288, 7.71920776, 199.789337, 0.986501276, 4.0791754e-08, 0.163753569, -3.72992339e-08, 1, -2.44025866e-08, -0.163753569, 1.79652986e-08, 0.986501276)
+		wait(.5)
+	end
 })
 
 --Sliders
