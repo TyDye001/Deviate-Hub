@@ -27,10 +27,6 @@ function kamehameha()
 	game:GetService("ReplicatedStorage").Skills.KamehamehaFolder.RemoteEvent:FireServer()
 end
 
-function lightningStrike()
-	game:GetService("ReplicatedStorage").Skills.LightningStrikeFolder.RemoteEvent:FireServer()
-end
-
 function smash()
 	game:GetService("ReplicatedStorage").Skills.SmashFolder.RemoteEvent:FireServer()
 end
@@ -274,13 +270,6 @@ SkillTab:AddButton({
 	Name = "Kamehameha (No Damage)",
 	Callback = function()
 		kamehameha()
-	end
-})
-
-SkillTab:AddButton({
-	Name = "Lightning Strike No Cooldown",
-	Callback = function()
-		lightningStrike()
 	end
 })
 
