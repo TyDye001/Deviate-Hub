@@ -258,7 +258,7 @@ MapTab:AddDropdown({
 MiscTab:AddDropdown({
 	Name = "Select Speed",
 	Default = "Normal",
-	Options = {"Normal", "Fast", "Very Fast", "Super Fast", "Too Fast"},
+	Options = {"Normal", "Fast", "Very Fast", "Super Fast", "Too Fast", "Way Too Fast"},
 	Callback = function(Value)
 		getgenv().WalkSpeed = (Value)
 	end    
@@ -367,6 +367,8 @@ MiscTab:AddButton({
 		elseif getgenv().WalkSpeed == "Super Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 250
 		elseif getgenv().WalkSpeed == "Too Fast" then
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 450
+		elseif getgenv().WalkSpeed == "Way Too Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
 	end
 end
