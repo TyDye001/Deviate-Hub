@@ -419,15 +419,13 @@ DFTab:AddButton({
 MiscTab:AddButton({
 	Name = "Collect Rewards",
 	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1213.58984, 7.16420555, 364.04599, 0.725067735, -6.93919233e-08, -0.688677549, -4.97258812e-09, 1, -1.05996463e-07, 0.688677549, 8.0279122e-08, 0.725067735)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1517.51074, 7.11579514, -487.748535, 0.47995621, 3.78450409e-08, 0.877292454, -9.56772084e-08, 1, 9.20539911e-09, -0.877292454, -8.83550797e-08, 0.47995621)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1487.08655, 8.31360435, -982.108276, 0.939927518, -2.42096068e-08, -0.34137404, 2.45030951e-09, 1, -6.41715232e-08, 0.34137404, 5.94801115e-08, 0.939927518)
-		wait(.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1317.07288, 7.71920776, 199.789337, 0.986501276, 4.0791754e-08, 0.163753569, -3.72992339e-08, 1, -2.44025866e-08, -0.163753569, 1.79652986e-08, 0.986501276)
-		wait(.5)
+		for i, v in pairs(game:GetService("Workspace").Oduller:GetDescendants()) do
+	if v.Name == "TouchInterest" and v.Parent then
+		firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+		wait(1)
+		firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
 	end
+end
 })
 
 --Sliders
