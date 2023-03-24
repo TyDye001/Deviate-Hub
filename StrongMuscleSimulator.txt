@@ -367,7 +367,7 @@ MiscTab:AddButton({
 		elseif getgenv().WalkSpeed == "Super Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 250
 		elseif getgenv().WalkSpeed == "Too Fast" then
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 425
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 450
 		elseif getgenv().WalkSpeed == "Way Too Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
 	end
@@ -421,12 +421,12 @@ MiscTab:AddButton({
 	Callback = function()
 		for i, v in pairs(game:GetService("Workspace").Oduller:GetDescendants()) do
 			if v.Name == "TouchInterest" and v.Parent then
-			firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-			wait(1)
-			firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+				wait(1)
+				firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
 			end
 		end
-end
+	end
 })
 
 --Sliders
