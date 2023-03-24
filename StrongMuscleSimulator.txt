@@ -367,7 +367,7 @@ MiscTab:AddButton({
 		elseif getgenv().WalkSpeed == "Super Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 250
 		elseif getgenv().WalkSpeed == "Too Fast" then
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 450
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 425
 		elseif getgenv().WalkSpeed == "Way Too Fast" then
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
 	end
