@@ -48,9 +48,9 @@ end
 function fastPunch()
 	while _G.fastPunch == true do
 		game:GetService("ReplicatedStorage"):WaitForChild("Skills"):WaitForChild("CombatFolder"):WaitForChild("RemoteEvent"):FireServer("Right")
-		wait(.0001)
+		wait(.01)
 		game:GetService("ReplicatedStorage"):WaitForChild("Skills"):WaitForChild("CombatFolder"):WaitForChild("RemoteEvent"):FireServer("Left")
-		wait(.0001)
+		wait(.01)
 	end
 end
 
