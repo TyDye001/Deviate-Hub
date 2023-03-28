@@ -200,7 +200,7 @@ SkillTab:AddToggle({
 EggTab:AddDropdown({
 	Name = "Select Egg",
 	Default = "Basic",
-	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Patrick", "Boss"},
+	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Boss"},
 	Callback = function(Value)
 		_G.selectEgg = (Value)
 	end    
@@ -238,7 +238,7 @@ EggTab:AddToggle({
 MapTab:AddDropdown({
 	Name = "Select Area",
 	Default = "Spawn",
-	Options = {"Spawn", "Jungle", "Beach", "Space", "Forest", "Desert", "Hell", "Candy", "Void", "Anime", "Moon", "Heaven", "Gym", "Candy Training", "Moon Training", "Boss"},
+	Options = {"Spawn", "Jungle", "Beach", "Space", "Forest", "Desert", "Hell", "Candy", "Void", "Anime", "Moon", "Heaven", "Gym", "Candy Training", "Moon Training", "Boss", "Above The Map"},
 	Callback = function(Value)
 		getgenv().TPPlace = (Value)
 	end    
@@ -304,6 +304,8 @@ MapTab:AddButton({
 		Teleport(game:GetService("Workspace").ScriptSabitleri.Training3.CFrame)
 		elseif getgenv().TPPlace == "Boss" then
 		Teleport(game:GetService("Workspace").BossSpawn.CFrame)
+		elseif getgenv().TPPlace == "Above The Map" then
+		Teleport(CFrame.new(-1319.40442, 89.5042191, 209.569458, 0.979221344, -1.4935889e-08, 0.202794418, 1.57723434e-08, 1, -2.50858401e-09, -0.202794418, 5.65500224e-09, 0.979221344))
   	end  
 end
 })
