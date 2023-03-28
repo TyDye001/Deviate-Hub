@@ -10,6 +10,9 @@ getgenv().autoGem = true
 getgenv().TPPlace = "String"
 getgenv().selectCrystal = "String"
 getgenv().autoCrystal = true
+getgenv().autoOrb = true
+getgenv().autoGem = true
+getgenv().autoHoop = true
 
 --Functions
 function autoExp()
@@ -44,6 +47,30 @@ function autoCrystal()
     end
 end
 
+function autoOrb()
+	while getgenv().autoOrb == true do
+		for i, v in pairs(game:GetService("Workspace").orbFolder:GetDescendants()) do
+			if v.Name == "TouchInterest" and v.Parent then
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
+				wait(.0001)
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+			end
+		end
+	end
+end
+
+function autoHoop()
+	while getgenv().autoHoop == true do
+		for i, v in pairs(game:GetService("Workspace").Hoops:GetDescendants()) do
+			if v.Name == "TouchInterest" and v.Parent then
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
+				wait(.0001)
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+			end
+		end
+	end
+end
+
 --Tabs
 local FarmTab = Window:MakeTab({
 	Name = "Auto Farm",
@@ -59,6 +86,12 @@ local TPTab = Window:MakeTab({
 
 local CrystalTab = Window:MakeTab({
 	Name = "Crystal",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local TrollTab = Window:MakeTab({
+	Name = "Troll",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -106,6 +139,24 @@ FarmTab:AddToggle({
 	Callback = function(Value)
 		getgenv().autoRebirth = (Value)
         autoRebirth()
+	end    
+})
+
+TrollTab:AddToggle({
+	Name = "No Orbs and Gems",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoOrb = (Value)
+        autoOrb()
+	end    
+})
+
+FarmTab:AddToggle({
+	Name = "Collect Hoops",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoHoop = (Value)
+        autoHoop()
 	end    
 })
 
