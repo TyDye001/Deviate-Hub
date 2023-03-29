@@ -14,6 +14,7 @@ getgenv().autoHatch = "String"
 getgenv().selectSpeed = "String"
 getgenv().collectRewards = "String"
 getgenv().autoEvo = true
+getgenv().autoShurikens = true
 
 --Functions
 function autoSwing()
@@ -52,6 +53,13 @@ end
 function bestSkill()
     while getgenv().bestSkill == true do
         game.Players.LocalPlayer.ninjaEvent:FireServer("buyAllSkills", "Blazing Vortex Island")
+        wait(.1)
+    end
+end
+
+function autoShurikens()
+    while getgenv().autoShurikens == true do
+        game:GetService("Players"):WaitForChild("tp105963"):WaitForChild("ninjaEvent"):FireServer("buyAllShurikens", "Blazing Vortex Island")
         wait(.1)
     end
 end
@@ -178,6 +186,15 @@ FarmTab:AddToggle({
     Callback = function(Value)
         getgenv().bestSkill = (Value)
         bestSkill()
+    end
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Buy Best Shuriken",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoShurikens = (Value)
+        autoShurikens()
     end
 })
 
