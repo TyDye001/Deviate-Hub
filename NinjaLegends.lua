@@ -282,7 +282,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").mythicalChest:GetDescendants()) do
@@ -290,7 +290,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").goldenChest:GetDescendants()) do
@@ -298,7 +298,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").enchantedChest:GetDescendants()) do
@@ -306,7 +306,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").groupRewardsCircle:GetDescendants()) do
@@ -314,7 +314,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").saharaChest:GetDescendants()) do
@@ -322,7 +322,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").thunderChest:GetDescendants()) do
@@ -330,7 +330,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").ancientChest:GetDescendants()) do
@@ -338,7 +338,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").midnightShadowChest:GetDescendants()) do
@@ -346,7 +346,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").lightKarmaChest:GetDescendants()) do
@@ -354,7 +354,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").evilKarmaChest:GetDescendants()) do
@@ -362,7 +362,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").wonderChest:GetDescendants()) do
@@ -370,7 +370,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").goldenZenChest:GetDescendants()) do
@@ -378,7 +378,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").dojoCircles.dojoCollectCircle:GetDescendants()) do
@@ -386,7 +386,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").skystormMastersChest:GetDescendants()) do
@@ -394,7 +394,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").chaosLegendsChest:GetDescendants()) do
@@ -402,7 +402,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
         for i, v in pairs(game:GetService("Workspace").soulFusionChest:GetDescendants()) do
@@ -410,7 +410,7 @@ MiscTab:AddButton({
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.1)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(1)
+                wait(.1)
             end
         end
     end
