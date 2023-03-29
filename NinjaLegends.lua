@@ -300,120 +300,103 @@ MiscTab:AddButton({
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
         for i, v in pairs(game:GetService("Workspace").mythicalChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
         for i, v in pairs(game:GetService("Workspace").goldenChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+
         for i, v in pairs(game:GetService("Workspace").enchantedChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+    
         for i, v in pairs(game:GetService("Workspace").saharaChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+      
         for i, v in pairs(game:GetService("Workspace").thunderChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").ancientChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+         
         for i, v in pairs(game:GetService("Workspace").midnightShadowChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").lightKarmaChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+          
         for i, v in pairs(game:GetService("Workspace").evilKarmaChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").wonderChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").goldenZenChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").dojoCircles.dojoCollectCircle:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+          
         for i, v in pairs(game:GetService("Workspace").skystormMastersChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").chaosLegendsChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
                 wait(.5)
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
                 wait(.5)
-            end
-        end
+        
         for i, v in pairs(game:GetService("Workspace").soulFusionChest:GetDescendants()) do
             if v.Name == "TouchInterest" and v.Parent then
                 firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
@@ -423,6 +406,36 @@ MiscTab:AddButton({
             end
         end
     end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
 })
 
 OrionLib:Init()
