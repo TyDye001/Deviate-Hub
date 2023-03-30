@@ -15,6 +15,8 @@ getgenv().selectSpeed = "String"
 getgenv().collectRewards = "String"
 getgenv().autoEvo = true
 getgenv().autoShurikens = true
+getgenv().autoCoin = true
+getgenv().autoChi = true
 
 --Functions
 function autoSwing()
@@ -69,6 +71,36 @@ function autoHoop()
         for i, v in ipairs(workspace:WaitForChild("Hoops"):GetChildren()) do
             game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("hoopEvent"):FireServer("useHoop", v)
             wait(.00000001)
+            if getgenv().autoHoop == false then break
+            end
+        end
+    end
+end
+
+function autoCoin()
+    local lastCoinCFrame = nil
+    while getgenv().autoCoin == true do
+        for i, v in ipairs(game:GetService("Workspace").spawnedCoins.Valley:GetChildren()) do
+            if v.Name == "Coin" or v.Name == "Coin Crate" or v.Name == "Blue Coin Crate" or v.Name == "Pink Coin Crate" and v.CFrame ~= lastCoinCFrame then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                lastCoinCFrame = v.CFrame
+                wait(.2)
+                if getgenv().autoCoin == false then break end
+            end
+        end
+    end
+end
+
+function autoChi()
+    local lastChiCFrame = nil
+    while getgenv().autoChi == true do
+        for i, v in ipairs(game:GetService("Workspace").spawnedCoins.Valley:GetChildren()) do
+            if v.Name == "Chi" or v.Name == "Chi Crate" or v.Name == "Blue Chi Crate" or v.Name == "Pink Chi Crate" and v.CFrame ~= lastChiCFrame then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                lastChiCFrame = v.CFrame
+                wait(.2)
+                if getgenv().autoChi == false then break end
+            end
         end
     end
 end
@@ -92,14 +124,26 @@ function autoEvo()
 end
 
 --Tabs
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
 local FarmTab = Window:MakeTab({
-	Name = "Auto Farm",
+	Name = "Extra Farms",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local TPTab = Window:MakeTab({
-	Name = "Teleport",
+	Name = "Island Menu",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local UnlockTab = Window:MakeTab({
+	Name = "Unlock Menu",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -114,6 +158,41 @@ local MiscTab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+UnlockTab:AddButton({
+    Name = "Unlock Elements",
+    Callback = function()
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Lightning")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Frost")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Inferno")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Electral Chaos")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Shadow Charge")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Masterful Wrath")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Shadowfire")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Eternity Storm")
+    wait(1)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("elementMasteryEvent"):FireServer("Blazing Entity")
+    end
+})
+
+TPTab:AddButton({
+    Name = "Discover Islands",
+    Callback = function()
+        for i, v in ipairs(game:GetService("Workspace").islandUnlockParts:GetDescendants()) do
+            if v.Name == "TouchInterest" then
+                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
+                wait(.1)
+                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+            end
+        end
+    end
 })
 
 TPTab:AddDropdown({
@@ -144,7 +223,7 @@ MiscTab:AddDropdown({
 })
 
 --Toggles
-FarmTab:AddToggle({
+MainTab:AddToggle({
     Name = "Auto Swing",
     Default = false,
     Callback = function(Value)
@@ -153,7 +232,7 @@ FarmTab:AddToggle({
     end
 })
 
-FarmTab:AddToggle({
+MainTab:AddToggle({
     Name = "Auto Sell",
     Default = false,
     Callback = function(Value)
@@ -162,7 +241,7 @@ FarmTab:AddToggle({
     end
 })
 
-FarmTab:AddToggle({
+MainTab:AddToggle({
     Name = "Auto Buy Best Weapon",
     Default = false,
     Callback = function(Value)
@@ -171,12 +250,39 @@ FarmTab:AddToggle({
     end
 })
 
-FarmTab:AddToggle({
+MainTab:AddToggle({
     Name = "Auto Buy Best Belt",
     Default = false,
     Callback = function(Value)
         getgenv().bestBelt = (Value)
         bestBelt()
+    end
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Coin",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoCoin = (Value)
+        autoCoin()
+    end
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Chi",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoChi = (Value)
+        autoChi()
+    end
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Hoop",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autoHoop = (Value)
+        autoHoop()
     end
 })
 
@@ -195,15 +301,6 @@ FarmTab:AddToggle({
     Callback = function(Value)
         getgenv().autoShurikens = (Value)
         autoShurikens()
-    end
-})
-
-FarmTab:AddToggle({
-    Name = "Auto Hoop",
-    Default = false,
-    Callback = function(Value)
-        getgenv().autoHoop = (Value)
-        autoHoop()
     end
 })
 
@@ -294,148 +391,41 @@ MiscTab:AddButton({
 MiscTab:AddButton({
     Name = "Collect Rewards",
     Callback = function(Value)
-        for i, v in pairs(game:GetService("Workspace").ultraNinjitsuChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        for i, v in pairs(game:GetService("Workspace").mythicalChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        for i, v in pairs(game:GetService("Workspace").goldenChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-
-        for i, v in pairs(game:GetService("Workspace").enchantedChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-    
-        for i, v in pairs(game:GetService("Workspace").saharaChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-      
-        for i, v in pairs(game:GetService("Workspace").thunderChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").ancientChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-         
-        for i, v in pairs(game:GetService("Workspace").midnightShadowChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").lightKarmaChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-          
-        for i, v in pairs(game:GetService("Workspace").evilKarmaChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").wonderChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").goldenZenChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").dojoCircles.dojoCollectCircle:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-          
-        for i, v in pairs(game:GetService("Workspace").skystormMastersChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").chaosLegendsChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-        
-        for i, v in pairs(game:GetService("Workspace").soulFusionChest:GetDescendants()) do
-            if v.Name == "TouchInterest" and v.Parent then
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
-                wait(.5)
-                firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                wait(.5)
-            end
-        end
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Golden Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Enchanted Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Magma Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Mythical Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Legends Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Eternal Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Sahara Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Thunder Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Ancient Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Midnight Shadow Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Evil Karma Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Wonder Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Golden Zen Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Ultra Ninjitsu Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Skystorm Masters Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Chaos Legends Chest")
+    wait(5)
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("checkChestRemote"):InvokeServer("Soul Fusion Chest")
+    wait(5)
     end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 })
 
 OrionLib:Init()
