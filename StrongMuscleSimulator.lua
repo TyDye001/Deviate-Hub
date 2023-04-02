@@ -161,6 +161,8 @@ function autoEasterEgg()
 		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1261.70227, 10.449338, 230.374176, 0.579262316, 1.02469983e-07, 0.815141201, -4.50554509e-08, 1, -9.36905806e-08, -0.815141201, 1.75448687e-08, 0.579262316)
 		wait(.1)
 		if getgenv().autoEasterEgg == false then break end
+		wait(23.51)
+		if getgenv().autoEasterEgg == false then break end
 	end
 end
 
