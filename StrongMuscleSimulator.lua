@@ -301,7 +301,7 @@ EggTab:AddToggle({
 MapTab:AddDropdown({
 	Name = "Select Area",
 	Default = "Spawn",
-	Options = {"Spawn", "Jungle", "Beach", "Space", "Forest", "Desert", "Hell", "Candy", "Void", "Anime", "Moon", "Heaven", "Gym", "Candy Training", "Moon Training", "Boss", "Easter", "Above The Map"},
+	Options = {"Spawn", "Jungle", "Beach", "Space", "Forest", "Desert", "Hell", "Candy", "Void", "Anime", "Moon", "Heaven", "Boss", "Easter", "Gym", "Candy Training", "Moon Training", "Above The Map"},
 	Callback = function(Value)
 		getgenv().TPPlace = (Value)
 	end    
