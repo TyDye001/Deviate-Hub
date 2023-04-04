@@ -10,15 +10,15 @@ if game.PlaceId == 10945472407 then
 
 --Values
 
-_G.autoWieght = true
-_G.autoRebirth = true
-_G.fastPunch = true
-_G.multiPunch = true
-_G.autoHatch = true
-_G.selectEgg = "Basic"
-_G.equipBestPets = true
-_G.teleportPlayer = true
-_G.playerName = "String"
+getgenv().autoWieght = true
+getgenv().autoRebirth = true
+getgenv().fastPunch = true
+getgenv().multiPunch = true
+getgenv().autoHatch = true
+getgenv().selectEgg = "Basic"
+getgenv().equipBestPets = true
+getgenv().teleportPlayer = true
+getgenv().playerName = "String"
 getgenv().autoEasterEgg = true
 
 
@@ -33,21 +33,21 @@ function smash()
 end
 
 function multiPunch()
-	while _G.multiPunch == true do
+	while getgenv().multiPunch == true do
 	game:GetService("ReplicatedStorage").Skills.MultiplePunchesFolder.RemoteEvent:FireServer()
 	wait(.25)
 	end
 end
 
 function smashGround()
-	while _G.smashGround == true do
+	while getgenv().smashGround == true do
 		game:GetService("ReplicatedStorage").Skills.GroundPunchFolder.RemoteEvent:FireServer()
 		wait(.1)
 	end
 end
 
 function fastPunch()
-	while _G.fastPunch == true do
+	while getgenv().fastPunch == true do
 		game:GetService("ReplicatedStorage"):WaitForChild("Skills"):WaitForChild("CombatFolder"):WaitForChild("RemoteEvent"):FireServer("Right")
 		wait(.01)
 		game:GetService("ReplicatedStorage"):WaitForChild("Skills"):WaitForChild("CombatFolder"):WaitForChild("RemoteEvent"):FireServer("Left")
@@ -58,7 +58,7 @@ end
 local plr = game.Players.LocalPlayer
 
 function autoWeight()
-	while _G.autoWeight == true do
+	while getgenv().autoWeight == true do
 	game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkillToggle"):FireServer("NumberOne", true)
 	wait(.00001)
 	for i,v in pairs(plr.Character:GetChildren()) do
@@ -74,7 +74,7 @@ end
 end
 
 function autoRebirth()
-		while _G.autoRebirth == true do
+		while getgenv().autoRebirth == true do
 			game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
 			wait(.01)
 		 end
@@ -91,21 +91,21 @@ function Teleport(teleportPlace)
 end
 
 function autoHatch()
-	while _G.autoHatch == true do
-		game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(_G.selectEgg,1)
+	while getgenv().autoHatch == true do
+		game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(getgenv().selectEgg,1)
 		wait(.1)
 	 end
 	end
 
 function craftAllPets()
-	while _G.craftAllPets == true do
+	while getgenv().craftAllPets == true do
 		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PetAction"):InvokeServer("Craft All")
 		wait(.1)
 	 end
 	end
 
 function equipBestPets()
-	while _G.equipBestPets == true do
+	while getgenv().equipBestPets == true do
 		game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Unequip All")
 		wait(.01)
 		game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Equip Best")
@@ -210,7 +210,7 @@ FarmTab:AddToggle({
 	Name = "Auto Weight",
 	Default = false,
 	Callback = function(Value)
-		_G.autoWeight = (Value)
+		getgenv().autoWeight = (Value)
         autoWeight()
 	end    
 })
@@ -219,7 +219,7 @@ FarmTab:AddToggle({
 	Name = "Auto Rebirth",
 	Default = false,
 	Callback = function(Value)
-		_G.autoRebirth = (Value)
+		getgenv().autoRebirth = (Value)
 		autoRebirth()
 	end
 })
@@ -237,7 +237,7 @@ SkillTab:AddToggle({
 	Name = "Fast Punch",
 	Default = false,
 	Callback = function(Value)
-		_G.fastPunch = (Value)
+		getgenv().fastPunch = (Value)
 		fastPunch()
 	end
 })
@@ -246,7 +246,7 @@ SkillTab:AddToggle({
 	Name = "Multiple Punch",
 	Default = false,
 	Callback = function(Value)
-		_G.multiPunch = (Value)
+		getgenv().multiPunch = (Value)
 		multiPunch()
 	end
 })
@@ -255,7 +255,7 @@ SkillTab:AddToggle({
 	Name = "Smash Ground",
 	Default = false,
 	Callback = function(Value)
-		_G.smashGround = (Value)
+		getgenv().smashGround = (Value)
 		smashGround()
 	end
 })
@@ -265,7 +265,7 @@ EggTab:AddDropdown({
 	Default = "Basic",
 	Options = {"Basic", "Town", "Beach", "Crystal", "Forest", "Desert", "Hell", "Cat", "Void", "Anime", "Atlantis", "Angel", "Boss", "Easter"},
 	Callback = function(Value)
-		_G.selectEgg = (Value)
+		getgenv().selectEgg = (Value)
 	end    
 })
 
@@ -273,7 +273,7 @@ EggTab:AddToggle({
 	Name = "Auto Hatch",
 	Default = false,
 	Callback = function(Value)
-		_G.autoHatch = (Value)
+		getgenv().autoHatch = (Value)
         autoHatch()
 	end    
 })
@@ -282,7 +282,7 @@ EggTab:AddToggle({
 	Name = "Equip Best Pets",
 	Default = false,
 	Callback = function(Value)
-		_G.equipBestPets = (Value)
+		getgenv().equipBestPets = (Value)
 		equipBestPets()
 	end
 })
@@ -291,7 +291,7 @@ EggTab:AddToggle({
 	Name = "Craft All Pets", 
 	Default = false,
 	Callback = function(Value)
-		_G.craftAllPets = (Value)
+		getgenv().craftAllPets = (Value)
 		craftAllPets()
 	end
 })
@@ -380,14 +380,14 @@ MapTab:AddTextbox({
 	Default = "No One",
 	TextDisappear = false,
 	Callback = function(Value)
-		_G.playerName = (Value)
+		getgenv().playerName = (Value)
 	end	  
 })
 
 MapTab:AddButton({
 	Name = "Teleport To Player", 
 	Callback = function(Value)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[_G.playerName].Character.HumanoidRootPart.CFrame
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().playerName].Character.HumanoidRootPart.CFrame
 	end
 })
 
