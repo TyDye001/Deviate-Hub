@@ -3,7 +3,7 @@
 
 if game.PlaceId == 10945472407 then
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-    local Window = OrionLib:MakeWindow({Name = "Deviant Hub  |  Strong Muscle Simulator",IntroText = "Deviant Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+    local Window = OrionLib:MakeWindow({Name = "Deviant Hub  |  Strong Muscle Simulator", IntroText = "Deviant Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 	getgenv().TPPlace = "string"
 	getgenv().WalkSpeed = "string"
@@ -466,7 +466,7 @@ MiscTab:AddButton({
 		da.BackgroundColor3=Color3.new(0.196078,0.196078,0.196078)da.Position=UDim2.new(0,0,1.0192306,0)
 		da.Size=UDim2.new(0,370,0,107)_b.Parent=da
 		_b.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)_b.Position=UDim2.new(0,0,0.800455689,0)
-		_b.Size=UDim2.new(0,370,0,21)_b.Font=Enum.Font.Arial;_b.Text="made by cofead#7431"
+		_b.Size=UDim2.new(0,370,0,21)_b.Font=Enum.Font.Arial;_b.Text="Made By Tydye177"
 		_b.TextColor3=Color3.new(0,1,1)_b.TextSize=20;ab.Parent=da
 		ab.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ab.Position=UDim2.new(0,0,0.158377,0)
 		ab.Size=UDim2.new(0,370,0,44)ab.Font=Enum.Font.ArialBold;ab.Text="Status: Active"
