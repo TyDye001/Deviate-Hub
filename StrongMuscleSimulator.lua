@@ -167,20 +167,6 @@ function autoEasterEgg()
 	end
 end
 
-function autoReward()
-	while getgenv().autoReward == true do
-		for i, v in ipairs(game:GetService("Workspace").Oduller:GetDescendants()) do
-			if v.Name == "TouchInterest" then
-				firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
-				wait(.2)
-				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-				wait(.2)
-				print(v.Parent)
-			end
-		end
-	end
-end
-
 function autoWheel()
 	while getgenv().autoWheel == true do
 		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Spin Wheel"):FireServer()
@@ -243,6 +229,14 @@ FarmTab:AddToggle({
 	Callback = function(Value)
 		getgenv().autoRebirth = (Value)
 		autoRebirth()
+	end
+})
+
+FarmTab:AddToggle({
+	Name = "Spin Wheel",
+	Callback = function(Value)
+		getgenv().autoWheel = (Value)
+		autoWheel()
 	end
 })
 
@@ -315,22 +309,6 @@ EggTab:AddToggle({
 	Callback = function(Value)
 		getgenv().craftAllPets = (Value)
 		craftAllPets()
-	end
-})
-
-MiscTab:AddToggle({
-	Name = "Collect Rewards",
-	Callback = function(Value)
-		getgenv().autoReward = (Value)
-		autoReward()
-	end
-})
-
-FarmTab:AddToggle({
-	Name = "Spin Wheel",
-	Callback = function(Value)
-		getgenv().autoWheel = (Value)
-		autoWheel()
 	end
 })
 
@@ -499,6 +477,21 @@ MiscTab:AddButton({
 		game:service'Players'.LocalPlayer.Idled:connect(function()
 		bb:CaptureController()bb:ClickButton2(Vector2.new())
 		ab.Text="Roblox tried to kick u but i kicked him instead"wait(2)ab.Text="Status : Active"end)
+	end
+})
+
+MiscTab:AddButton({
+	Name = "Collect Rewards",
+	Callback = function(Value)
+		for i, v in ipairs(game:GetService("Workspace").Oduller:GetDescendants()) do
+			if v.Name == "TouchInterest" then
+				firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+				wait(.2)
+				firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+				wait(.2)
+				print(v.Parent)
+			end
+		end
 	end
 })
 
